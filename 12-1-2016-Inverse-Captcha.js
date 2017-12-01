@@ -13,17 +13,13 @@
 // the last digit, 9.
 
 function findMatchingSums(digits) {
-  let sum = 0;
+  const arr = digits.split('');
 
-  digits.split('').forEach((digit, index) => {
-    digit === digits[index + 1] ? sum += parseInt(digit) : sum = sum;
-  });
+  let sum = arr.reduce((previous, current, index) => (
+      current === arr[(index + (arr.length/2)) % arr.length] ? previous + parseInt(current) : previous
+  ), 0)
 
-  let lastDigit = digits[digits.length - 1];
-
-  lastDigit === digits[0] ? sum += parseInt(lastDigit) : sum = sum;
-
-  console.log(sum);
+  console.log(sum)
   return sum;
 }
 
